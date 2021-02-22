@@ -41,12 +41,9 @@ namespace FoodOrder.Api.Controllers
         /// <param name="token"></param>
         /// <returns>OrderDto</returns>
         [Route("{orderId}")]
-        public async Task<IActionResult> GetOrderStatus(string id, CancellationToken token = default)
+        public async Task<IActionResult> GetOrderStatus(int id, CancellationToken token = default)
         {
-            if (!Guid.TryParse(id, out var guid) || guid != Guid.Empty)
-                return BadRequest();
-
-            var order = await _mediator.SendAsync(new GetOrderQuery(guid), token);
+            var order = await _mediator.SendAsync(new GetOrderQuery(id), token);
             return Ok(order);
         }
         [Route("cancel")]

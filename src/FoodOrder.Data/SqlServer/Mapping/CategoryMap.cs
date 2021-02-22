@@ -15,7 +15,7 @@ namespace FoodOrder.Data.SqlServer.Mapping
 
             m.Ignore(b => b.DomainEvents);
             m.Property(cr => cr.Name).IsRequired();
-            m.HasMany(x => x.MenuItems).WithOne().OnDelete(DeleteBehavior.Cascade);
+            m.HasMany(x => x.MenuItems).WithOne(x=>x.Category).HasForeignKey(x=>x.CategoryId).OnDelete(DeleteBehavior.Cascade);
             //TODO add all properties mapping explicitly
         }
     }
