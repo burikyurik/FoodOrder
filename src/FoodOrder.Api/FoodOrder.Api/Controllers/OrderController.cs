@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using FoodOrder.Api.Models;
+using FoodOrder.Business.Command;
 using FoodOrder.Business.Query;
-using FoodOrder.Business.Dtos;
 using MediatR;
 
 namespace FoodOrder.Api.Controllers
@@ -23,31 +23,43 @@ namespace FoodOrder.Api.Controllers
         }
 
         /// <summary>
-        /// Search restaurants menu items by keyword and location.
+        /// Create food order.
         /// </summary>
-        /// <param name="searchKeyword">Menu item name or category.</param>
-        /// <param name="location">Restaurants location.</param>
+        /// <param name="orderRequest">Order parameters.</param>
         /// <param name="token"></param>
-        /// <returns>Founded list of restaurants with menu items.</returns>
-        [HttpGet("search")]
-        public async Task<IActionResult> GetMenuItems(string searchKeyword, string location, CancellationToken token = default)
-        {
-            var restaurants = await _mediator.SendAsync(new SearchRestaurantQuery(searchKeyword, location), token);
-            return Ok(restaurants);
-        }
-
+        /// <returns></returns>
         [HttpPost("order")]
-        public async Task<IActionResult> CreateOrders(string searchKeyword, string location, CancellationToken token = default)
+        public async Task<IActionResult> CreateOrders([FromBody] OrderRequest orderRequest, CancellationToken token = default)
         {
-            var redcurrants = await _mediator.SendAsync<ICollection<RestaurantMenuDto>>(new SearchRestaurantQuery(searchKeyword, location), token);
-            return Ok(redcurrants);
+            throw new NotImplementedException();
         }
 
-        [Route("{orderId:int}")]
-        public async Task<IActionResult> GetOrder(string searchKeyword, string location, CancellationToken token = default)
+        /// <summary>
+        /// Get order details and status.
+        /// </summary>
+        /// <param name="id">Order Id.</param>
+        /// <param name="token"></param>
+        /// <returns>OrderDto</returns>
+        [Route("{orderId}")]
+        public async Task<IActionResult> GetOrderStatus(string id, CancellationToken token = default)
         {
-            var redcurrants = await _mediator.SendAsync<ICollection<RestaurantMenuDto>>(new SearchRestaurantQuery(searchKeyword, location), token);
-            return Ok(redcurrants);
+            if (!Guid.TryParse(id, out var guid) || guid != Guid.Empty)
+                return BadRequest();
+
+            var order = await _mediator.SendAsync(new GetOrderQuery(guid), token);
+            return Ok(order);
+        }
+        [Route("cancel")]
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> CancelOrder(string id, CancellationToken token = default)
+        {
+            if (!Guid.TryParse(id, out var guid) || guid != Guid.Empty)
+                return BadRequest();
+
+            await _mediator.PublishAsync(new CancelOrderCommand(guid), token);
+            return Ok();
         }
     }
 }

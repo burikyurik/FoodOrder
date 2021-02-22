@@ -7,6 +7,6 @@ namespace FoodOrder.Api.Controllers
     [ApiController]
     public class UserManagementController : ControllerBase
     {
-
+        
     }
 }
