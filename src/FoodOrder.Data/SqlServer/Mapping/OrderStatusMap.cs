@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FoodOrder.Data.Mapping
+namespace FoodOrder.Data.SqlServer.Mapping
 {
     internal class OrderStatusMap
         : IEntityTypeConfiguration<OrderStatus>

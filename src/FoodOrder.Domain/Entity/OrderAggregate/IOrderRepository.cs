@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace FoodOrder.Domain.Entity.OrderAggregate
 {
@@ -8,6 +9,6 @@ namespace FoodOrder.Domain.Entity.OrderAggregate
 
         void Update(Order order);
 
-        Task<Order> GetAsync(int orderId);
+        Task<Order> GetAsync(int orderId, CancellationToken token=default);
     }
 }

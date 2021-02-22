@@ -1,14 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using FoodOrder.Domain.Entity.OrderAggregate;
 
 namespace FoodOrder.Domain.Entity.ClientAggregate
 {
     public interface IClientRepository : IRepository<Client>
     {
-        Order Add(Client order);
+        Client Add(Client client);
 
-        void Update(Client order);
+        void Update(Client client);
 
-        Task<Client> GetAsync(int orderId);
+        Task<Client> GetAsync(int clientId, CancellationToken token = default);
     }
 }

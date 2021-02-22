@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace FoodOrder.Domain.Entity.RestaurantAggregate
 {
@@ -8,6 +9,7 @@ namespace FoodOrder.Domain.Entity.RestaurantAggregate
 
         void Update(Restaurant restaurant);
 
-        Task<Restaurant> GetAsync(int restaurantId);
+        Task<Restaurant> GetAsync(int restaurantId, CancellationToken token=default);
+        Task<Restaurant> GetAsync(int restaurantId, CancellationToken token = default);
     }
 }

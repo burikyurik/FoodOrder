@@ -7,7 +7,7 @@ using FoodOrder.Domain.Entity.OrderAggregate;
 using FoodOrder.Domain.Entity.RestaurantAggregate;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodOrder.Data
+namespace FoodOrder.Data.SqlServer
 {
     public class OrderingContext: DbContext, IUnitOfWork
     {
