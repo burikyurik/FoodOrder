@@ -5,10 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.1.5" />
+    <PackageReference Include="MassTransit.EntityFrameworkCore" Version="7.1.5" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.5" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.5" />
     <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\FoodOrder.Models\FoodOrder.Shared.Models.csproj" />
     <ProjectReference Include="..\FoodOrder.Data\FoodOrder.Data.csproj" />
   </ItemGroup>
 
