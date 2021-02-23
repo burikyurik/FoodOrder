@@ -12,7 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using FoodOrder.Business.Command;
 using FoodOrder.Data.SqlServer;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrder.Api
@@ -40,6 +42,8 @@ namespace FoodOrder.Api
                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                     });
             }, ServiceLifetime.Scoped);
+
+            services.AddMediatR(typeof(CreateOrdersCommand));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

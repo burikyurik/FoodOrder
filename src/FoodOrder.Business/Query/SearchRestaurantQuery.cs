@@ -4,7 +4,7 @@ using MediatR;
 
 namespace FoodOrder.Business.Query
 {
-    public class SearchRestaurantQuery: ICancellableAsyncRequest<ICollection<RestaurantMenuDto>>
+    public class SearchRestaurantQuery: IRequest<ICollection<RestaurantMenuDto>>
     {
         public SearchRestaurantQuery(string keyWord, string location)
         {

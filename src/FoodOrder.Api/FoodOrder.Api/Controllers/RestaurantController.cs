@@ -31,7 +31,7 @@ namespace FoodOrder.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetMenuItems(string searchKeyword, string location, CancellationToken token = default)
         {
-            var restaurants = await _mediator.SendAsync(new SearchRestaurantQuery(searchKeyword, location), token);
+            var restaurants = await _mediator.Send(new SearchRestaurantQuery(searchKeyword, location), token);
             return Ok(restaurants);
         }
     }

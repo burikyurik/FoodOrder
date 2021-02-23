@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrder.Business.QueryHandlers
 {
-    public class GetOrdersQuerySqlQueryHandler : ICancellableAsyncRequestHandler<GetOrderQuery, OrderDto>
+    public class GetOrdersQuerySqlQueryHandler : IRequestHandler<GetOrderQuery, OrderDto>
     {
         private readonly OrderingContext _context;
 

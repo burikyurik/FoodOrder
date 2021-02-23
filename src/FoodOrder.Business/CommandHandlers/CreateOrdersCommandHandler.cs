@@ -6,7 +6,7 @@ using MediatR;
 
 namespace FoodOrder.Business.CommandHandlers
 {
-    public class CreateOrdersCommandHandler:ICancellableAsyncNotificationHandler<CreateOrdersCommand>
+    public class CreateOrdersCommandHandler: INotificationHandler<CreateOrdersCommand>
     {
         public async Task Handle(CreateOrdersCommand notification, CancellationToken cancellationToken)
         {

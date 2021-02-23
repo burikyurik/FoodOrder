@@ -4,7 +4,7 @@ using MediatR;
 
 namespace FoodOrder.Business.Query
 {
-    public class GetOrderQuery : ICancellableAsyncRequest<OrderDto>
+    public class GetOrderQuery : IRequest<OrderDto>
     {
         public GetOrderQuery(int orderId)
         {

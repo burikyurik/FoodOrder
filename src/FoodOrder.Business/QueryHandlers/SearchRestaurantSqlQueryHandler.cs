@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrder.Business.QueryHandlers
 {
-    public class SearchRestaurantSqlQueryHandler : ICancellableAsyncRequestHandler<SearchRestaurantQuery, ICollection<RestaurantMenuDto>>
+    public class SearchRestaurantSqlQueryHandler : IRequestHandler<SearchRestaurantQuery, ICollection<RestaurantMenuDto>>
     {
         private readonly OrderingContext _context;
 

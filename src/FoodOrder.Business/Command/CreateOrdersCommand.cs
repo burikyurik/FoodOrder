@@ -5,7 +5,7 @@ using MediatR;
 
 namespace FoodOrder.Business.Command
 {
-    public class CreateOrdersCommand : ICancellableAsyncNotification
+    public class CreateOrdersCommand : INotification
     {
         public CreateOrdersCommand(int? clientId, ICollection<(int restaurantId, int[] menuItemInts)> orders)
         {

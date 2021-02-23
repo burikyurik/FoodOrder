@@ -3,7 +3,7 @@ using MediatR;
 
 namespace FoodOrder.Business.Command
 {
-    public class CancelOrderCommand : ICancellableAsyncNotification
+    public class CancelOrderCommand : INotification
     {
         public int OrderId { get; }
 
