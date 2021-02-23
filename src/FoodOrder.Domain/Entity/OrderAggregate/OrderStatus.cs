@@ -9,9 +9,9 @@ namespace FoodOrder.Domain.Entity.OrderAggregate
     public class OrderStatus
         : Enumeration
     {
-        public static OrderStatus Submitted = new OrderStatus(1, nameof(Submitted).ToLowerInvariant());
-        public static OrderStatus AwaitingValidation = new OrderStatus(2, nameof(AwaitingValidation).ToLowerInvariant());
-        public static OrderStatus Confirmed = new OrderStatus(3, nameof(Confirmed).ToLowerInvariant());
+        public static OrderStatus Created = new OrderStatus(1, nameof(Created).ToLowerInvariant());
+        public static OrderStatus Accepted = new OrderStatus(2, nameof(Accepted).ToLowerInvariant());
+        public static OrderStatus Cooked = new OrderStatus(3, nameof(Cooked).ToLowerInvariant());
         public static OrderStatus Paid = new OrderStatus(4, nameof(Paid).ToLowerInvariant());
         public static OrderStatus Delivered = new OrderStatus(5, nameof(Delivered).ToLowerInvariant());
         public static OrderStatus Cancelled = new OrderStatus(6, nameof(Cancelled).ToLowerInvariant());
@@ -22,7 +22,7 @@ namespace FoodOrder.Domain.Entity.OrderAggregate
         }
 
         public static IEnumerable<OrderStatus> List() =>
-            new[] { Submitted, AwaitingValidation, Confirmed, Paid, Delivered, Cancelled };
+            new[] { Created, Accepted, Cooked, Paid, Delivered, Cancelled };
 
         public static OrderStatus FromName(string name)
         {

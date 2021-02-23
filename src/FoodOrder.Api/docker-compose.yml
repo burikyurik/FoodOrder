@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  foodorder.api:
+    image: ${DOCKER_REGISTRY-}foodorderapi
+    build:
+      context: .
+      dockerfile: FoodOrder.Api/Dockerfile

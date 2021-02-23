@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Data.Tests", "Foo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Domain.Tests", "FoodOrder.Domain.Tests\FoodOrder.Domain.Tests.csproj", "{FDBF8C04-F988-47FF-BFEC-A710511ED5FC}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9DF7C148-CEE8-4654-BA82-00A803F0185D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{FDBF8C04-F988-47FF-BFEC-A710511ED5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDBF8C04-F988-47FF-BFEC-A710511ED5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDBF8C04-F988-47FF-BFEC-A710511ED5FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF7C148-CEE8-4654-BA82-00A803F0185D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF7C148-CEE8-4654-BA82-00A803F0185D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF7C148-CEE8-4654-BA82-00A803F0185D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF7C148-CEE8-4654-BA82-00A803F0185D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
