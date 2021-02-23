@@ -5,9 +5,9 @@ namespace FoodOrder.Business.Command
 {
     public class CancelOrderCommand : ICancellableAsyncNotification
     {
-        public Guid OrderId { get; }
+        public int OrderId { get; }
 
-        public CancelOrderCommand(Guid orderId)
+        public CancelOrderCommand(int orderId)
         {
             OrderId = orderId;
         }

@@ -7,5 +7,7 @@ namespace FoodOrder.Api.Models
 {
     public class OrderRequest
     {
+        public int? ClientId { get; set; }
+        public ICollection<(int restaurantId, int[] menuItemInts)> Orders { get; set; }
     }
 }

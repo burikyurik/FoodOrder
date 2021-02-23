@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using FoodOrder.Business.Query;
 using MediatR;
@@ -26,6 +27,8 @@ namespace FoodOrder.Api.Controllers
         /// <param name="token"></param>
         /// <returns>Founded list of restaurants with menu items.</returns>
         [HttpGet("search")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetMenuItems(string searchKeyword, string location, CancellationToken token = default)
         {
             var restaurants = await _mediator.SendAsync(new SearchRestaurantQuery(searchKeyword, location), token);

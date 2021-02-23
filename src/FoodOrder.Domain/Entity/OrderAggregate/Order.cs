@@ -9,7 +9,8 @@ namespace FoodOrder.Domain.Entity.OrderAggregate
 {
     public class Order : Entity, IAggregateRoot
     {
-        public Order(DateTime orderDate, Address address, int orderStatusId, int? clientId, string description, int restaurantId, IList<OrderItem> orderItems)
+        public Order(){}
+        public Order(DateTime orderDate, Address address, int orderStatusId, int? clientId, string description, int restaurantId, IList<OrderItem> orderItems):this()
         {
             //TODO add validation
             OrderDate = orderDate;

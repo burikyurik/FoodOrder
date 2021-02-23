@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FoodOrder.Business.Dtos;
 using FoodOrder.Business.Query;
 using FoodOrder.Data.SqlServer;
 using FoodOrder.Domain.Entity.OrderAggregate;
-using FoodOrder.Domain.Entity.RestaurantAggregate;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -35,7 +32,9 @@ namespace FoodOrder.Business.QueryHandlers
         {
             return new OrderDto
             {
-                
+                Id = order.Id,
+                OrderDate = order.OrderDate,
+                OrderStatus = order.OrderStatus.Name
             };
         }
     }

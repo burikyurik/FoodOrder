@@ -9,7 +9,6 @@ namespace FoodOrder.Domain.Entity.RestaurantAggregate
 
         void Update(Restaurant restaurant);
 
-        Task<Restaurant> GetAsync(int restaurantId, CancellationToken token=default);
         Task<Restaurant> GetAsync(int restaurantId, CancellationToken token = default);
     }
 }

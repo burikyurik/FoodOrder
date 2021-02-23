@@ -29,9 +29,12 @@ namespace FoodOrder.Api.Controllers
         /// <param name="token"></param>
         /// <returns></returns>
         [HttpPost("order")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CreateOrders([FromBody] OrderRequest orderRequest, CancellationToken token = default)
         {
-            throw new NotImplementedException();
+            await _mediator.PublishAsync(new CreateOrdersCommand(orderRequest.ClientId, orderRequest.Orders), token);
+            return Ok();
         }
 
         /// <summary>
@@ -41,6 +44,9 @@ namespace FoodOrder.Api.Controllers
         /// <param name="token"></param>
         /// <returns>OrderDto</returns>
         [Route("{orderId}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> GetOrderStatus(int id, CancellationToken token = default)
         {
             var order = await _mediator.SendAsync(new GetOrderQuery(id), token);
@@ -50,12 +56,10 @@ namespace FoodOrder.Api.Controllers
         [HttpPut]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> CancelOrder(string id, CancellationToken token = default)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> CancelOrder(int id, CancellationToken token = default)
         {
-            if (!Guid.TryParse(id, out var guid) || guid != Guid.Empty)
-                return BadRequest();
-
-            await _mediator.PublishAsync(new CancelOrderCommand(guid), token);
+            await _mediator.PublishAsync(new CancelOrderCommand(id), token);
             return Ok();
         }
     }

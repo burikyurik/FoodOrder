@@ -25,18 +25,7 @@ namespace FoodOrder.Data.SqlServer
             return true;
         }
 
-        public OrderingContext(string connString)
-            : base(OptionFromConnectionString(connString))
-        {
-        }
-
-        private static DbContextOptions OptionFromConnectionString(string connString)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<OrderingContext>();
-            optionsBuilder.UseSqlServer(connString);
-            optionsBuilder.EnableDetailedErrors();
-            return optionsBuilder.Options;
-        }
+        public OrderingContext(DbContextOptions<OrderingContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

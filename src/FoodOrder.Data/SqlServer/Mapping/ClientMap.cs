@@ -9,7 +9,7 @@ namespace FoodOrder.Data.SqlServer.Mapping
     {
         public void Configure(EntityTypeBuilder<Client> m)
         {
-            m.ToTable("categories");
+            m.ToTable("clients");
 
             m.HasKey(o => o.Id);
 
