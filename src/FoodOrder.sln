@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Shared.Models", "Common\FoodOrder.Models\FoodOrder.Shared.Models.csproj", "{25BEDD11-8BC8-4F7D-A434-9AC37D5691DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.DeliverySerive", "DeliverySerive\FoodOrder.DeliverySerive\FoodOrder.DeliverySerive.csproj", "{0B55E121-2716-4FE4-A354-D533AB9BFEF3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Api", "Order\FoodOrder.Api\FoodOrder.Api.csproj", "{A9178F61-86F1-4DD9-93F7-E0C28931A355}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Business", "Order\FoodOrder.Business\FoodOrder.Business.csproj", "{80709322-CEC9-4D9B-BD76-0CB9CF53516C}"
@@ -28,6 +26,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Payment.Api", "PaymentService\FoodOrder.Payment.Api\FoodOrder.Payment.Api.csproj", "{BB740002-89CA-45EC-9ABD-E85614B1B248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Delivery.Api", "DeliverySerive\FoodOrder.Delivery.Api\FoodOrder.Delivery.Api.csproj", "{A5A9D51D-8FF6-4CE8-ACD4-72607EC91CA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,10 +40,6 @@ Global
 		{25BEDD11-8BC8-4F7D-A434-9AC37D5691DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25BEDD11-8BC8-4F7D-A434-9AC37D5691DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25BEDD11-8BC8-4F7D-A434-9AC37D5691DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B55E121-2716-4FE4-A354-D533AB9BFEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B55E121-2716-4FE4-A354-D533AB9BFEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B55E121-2716-4FE4-A354-D533AB9BFEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B55E121-2716-4FE4-A354-D533AB9BFEF3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9178F61-86F1-4DD9-93F7-E0C28931A355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9178F61-86F1-4DD9-93F7-E0C28931A355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9178F61-86F1-4DD9-93F7-E0C28931A355}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -74,6 +72,14 @@ Global
 		{A2EDBE10-3983-4A88-A789-41556A58CED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2EDBE10-3983-4A88-A789-41556A58CED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2EDBE10-3983-4A88-A789-41556A58CED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB740002-89CA-45EC-9ABD-E85614B1B248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB740002-89CA-45EC-9ABD-E85614B1B248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB740002-89CA-45EC-9ABD-E85614B1B248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB740002-89CA-45EC-9ABD-E85614B1B248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5A9D51D-8FF6-4CE8-ACD4-72607EC91CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5A9D51D-8FF6-4CE8-ACD4-72607EC91CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5A9D51D-8FF6-4CE8-ACD4-72607EC91CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5A9D51D-8FF6-4CE8-ACD4-72607EC91CA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
