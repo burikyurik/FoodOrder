@@ -6,5 +6,7 @@ namespace FoodOrder.Shared.Models.IntegrationEvents
 {
     public interface IOrderCancelled : IMessage
     {
+
+       
     }
 }

@@ -21,6 +21,7 @@ namespace FoodOrder.Business.QueryHandlers
 
         public async Task<OrderDto> Handle(GetOrderQuery message, CancellationToken cancellationToken)
         {
+            //TODO move query to repository
             var order = await _context.Orders.AsNoTracking()
                 .Where(x => x.Id == message.OrderId)
                 .Select(x => MapDto(x))

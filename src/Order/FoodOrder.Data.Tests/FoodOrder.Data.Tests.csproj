@@ -15,6 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\FoodOrder.Data\FoodOrder.Data.csproj" />
+    <ProjectReference Include="..\FoodOrder.Data\FoodOrder.Data.csproj" />
+    <ProjectReference Include="..\FoodOrder.Domain\FoodOrder.Domain.csproj" />
   </ItemGroup>
 
 </Project>

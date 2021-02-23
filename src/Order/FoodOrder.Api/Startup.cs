@@ -1,23 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using FoodOrder.Business.Command;
+using FoodOrder.Business.Services;
 using FoodOrder.Data.SqlServer;
 using FoodOrder.Data.SqlServer.Repository;
 using FoodOrder.Domain.Entity.ClientAggregate;
 using FoodOrder.Domain.Entity.OrderAggregate;
 using FoodOrder.Domain.Entity.RestaurantAggregate;
+using MassTransit;
+using MassTransit.EntityFrameworkCoreIntegration;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,11 +42,30 @@ namespace FoodOrder.Api
                         sqlOptions.MigrationsAssembly(typeof(OrderingContext).GetTypeInfo().Assembly.GetName().Name);
                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                     });
-            }, ServiceLifetime.Scoped);
+            });
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddMediatR(typeof(CreateOrdersCommand));
+
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) => {
+                    cfg.ConfigureEndpoints(context);
+                });
+                x.AddSagaStateMachine<OrderProcessorStateMachine, ProcessingOrderState>()
+                    .EntityFrameworkRepository(r => {
+                        r.ConcurrencyMode = ConcurrencyMode.Optimistic;
+
+                        r.AddDbContext<DbContext, OrderStateDbContext>((provider, builder) => {
+                            builder.UseSqlServer(Configuration["ConnectionString"], m => {
+                                m.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name);
+                                m.MigrationsHistoryTable($"__{nameof(OrderStateDbContext)}");
+                            });
+                        });
+                    });
+            });
+            services.AddMassTransitHostedService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -22,6 +22,7 @@ namespace FoodOrder.Business.QueryHandlers
 
         public async Task<ICollection<RestaurantMenuDto>> Handle(SearchRestaurantQuery message, CancellationToken cancellationToken)
         {
+            //TODO move query to repository
             var result = new List<RestaurantMenuDto>();
             var restaurantsIds = await _context.Restaurants
                 .AsNoTracking()
