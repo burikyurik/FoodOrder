@@ -32,6 +32,7 @@ namespace FoodOrder.Data.SqlServer
             if (modelBuilder == null)
                 throw new ArgumentNullException(nameof(modelBuilder));
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+            modelBuilder.Seed();
         }
     }
 }

@@ -10,11 +10,10 @@ namespace FoodOrder.Domain.Entity.OrderAggregate
     public class Order : Entity, IAggregateRoot
     {
         public Order(){}
-        public Order(DateTime orderDate, Address address, int orderStatusId, int? clientId, string description, int restaurantId, IList<OrderItem> orderItems):this()
+        public Order(DateTime orderDate, int orderStatusId, int? clientId, string description, int restaurantId, IList<OrderItem> orderItems):this()
         {
             //TODO add validation
             OrderDate = orderDate;
-            Address = address;
             OrderStatusId = orderStatusId;
             ClientId = clientId;
             Description = description;
@@ -24,7 +23,6 @@ namespace FoodOrder.Domain.Entity.OrderAggregate
         }
 
         public DateTime OrderDate { get; private set; }
-        public Address Address { get; private set; }
         public int? ClientId { get; private set; }
         public int OrderStatusId { get; private set; }
         public string Description { get; private set; }

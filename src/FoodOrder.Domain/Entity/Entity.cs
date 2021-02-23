@@ -6,7 +6,7 @@ namespace FoodOrder.Domain.Entity
     public abstract class Entity
     {
         private int? _requestedHashCode;
-        public virtual int Id { get; }
+        public int Id { get; private set; }
 
         private List<INotification> _domainEvents;
         public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();

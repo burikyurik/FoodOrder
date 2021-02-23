@@ -14,6 +14,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using FoodOrder.Business.Command;
 using FoodOrder.Data.SqlServer;
+using FoodOrder.Data.SqlServer.Repository;
+using FoodOrder.Domain.Entity.ClientAggregate;
+using FoodOrder.Domain.Entity.OrderAggregate;
+using FoodOrder.Domain.Entity.RestaurantAggregate;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,7 +46,9 @@ namespace FoodOrder.Api
                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                     });
             }, ServiceLifetime.Scoped);
-
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddMediatR(typeof(CreateOrdersCommand));
         }
 

@@ -2,7 +2,10 @@
 {
     public class MenuItem : Entity
     {
-        public MenuItem(string name, decimal price, int categoryId)
+        public MenuItem()
+        {
+        }
+        public MenuItem(string name, decimal price, int categoryId):this()
         {
             //TODO add price validation
             Name = name;

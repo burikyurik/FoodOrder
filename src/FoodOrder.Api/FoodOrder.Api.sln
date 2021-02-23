@@ -30,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Domain.Tests", "F
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9DF7C148-CEE8-4654-BA82-00A803F0185D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{7E4FEFA6-2EED-4E0B-B33C-923F55FA4580}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Shared.Models", "FoodOrder.Models\FoodOrder.Shared.Models.csproj", "{6FBDD48E-A70B-4251-AECF-0AD6B1196F19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,10 @@ Global
 		{9DF7C148-CEE8-4654-BA82-00A803F0185D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DF7C148-CEE8-4654-BA82-00A803F0185D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DF7C148-CEE8-4654-BA82-00A803F0185D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FBDD48E-A70B-4251-AECF-0AD6B1196F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FBDD48E-A70B-4251-AECF-0AD6B1196F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FBDD48E-A70B-4251-AECF-0AD6B1196F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FBDD48E-A70B-4251-AECF-0AD6B1196F19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +88,7 @@ Global
 		{CDFB391A-95F3-4D39-95CD-D3D2584B17D5} = {D85D1195-272E-45C2-998A-3E6939FBBAB2}
 		{83162AE3-9592-4600-B1D6-26EFD56B142A} = {D85D1195-272E-45C2-998A-3E6939FBBAB2}
 		{FDBF8C04-F988-47FF-BFEC-A710511ED5FC} = {D85D1195-272E-45C2-998A-3E6939FBBAB2}
+		{6FBDD48E-A70B-4251-AECF-0AD6B1196F19} = {7E4FEFA6-2EED-4E0B-B33C-923F55FA4580}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E992781D-39E7-44E0-AB37-C1B98D7754B7}

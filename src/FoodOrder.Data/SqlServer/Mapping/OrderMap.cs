@@ -9,11 +9,11 @@ namespace FoodOrder.Data.SqlServer.Mapping
         {
             m.ToTable("Orders");
             m.HasKey(x => x.Id);
-            m.OwnsOne(o => o.Address, a =>
-            {
-                a.Property<int>("OrderId");
-                a.WithOwner();
-            });
+            //m.OwnsOne(o => o.Address, a =>
+            //{
+            //    a.Property<int>("OrderId");
+            //    a.WithOwner();
+            //});
             m.Ignore(b => b.DomainEvents);
             m.HasMany(x => x.OrderItems).WithOne().HasForeignKey(x => x.OrderId);
             m.HasOne(x => x.OrderStatus).WithMany().HasForeignKey(x => x.OrderStatusId);

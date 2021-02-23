@@ -33,14 +33,14 @@ namespace FoodOrder.Business.QueryHandlers
                 return result;
 
             var menuItemsWithCategory = await _context.RestaurantCategories.AsNoTracking()
-                .Where(x => restaurantsIds.Contains(x.RestaurantId) && EF.Functions.Like(x.Name, message.KeyWord))
+                .Where(x => restaurantsIds.Contains(x.Restaurant.Id) && EF.Functions.Like(x.Name, message.KeyWord))
                 .Select(x => MapDto(x))
                 .ToListAsync(cancellationToken);
             result.AddRange(menuItemsWithCategory);
 
             var selectedMenuItemsIds = menuItemsWithCategory.Select(x => x.Id).Distinct().ToHashSet();
             var menuItems = await _context.MenuItems.AsNoTracking()
-                .Where(x => restaurantsIds.Contains(x.Category.RestaurantId) && EF.Functions.Like(x.Name, message.KeyWord) && !selectedMenuItemsIds.Contains(x.Id))
+                .Where(x => restaurantsIds.Contains(x.Category.Restaurant.Id) && EF.Functions.Like(x.Name, message.KeyWord) && !selectedMenuItemsIds.Contains(x.Id))
                 .Select(x => MapDto(x.Category))
                 .ToListAsync(cancellationToken);
             result.AddRange(menuItems);

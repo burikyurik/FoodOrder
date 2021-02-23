@@ -18,7 +18,7 @@ namespace FoodOrder.Data.Tests
             await using var ctx = new OrderingContext(options);
             // Act
             await ctx.Database.EnsureDeletedAsync();
-            await ctx.Database.EnsureCreatedAsync();
+            await ctx.Database.MigrateAsync();
         }
     }
 }

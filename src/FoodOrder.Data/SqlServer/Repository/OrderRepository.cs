@@ -30,7 +30,7 @@ namespace FoodOrder.Data.SqlServer.Repository
         {
             var order = await _context
                 .Orders
-                .Include(x => x.Address)
+                //.Include(x => x.Address)
                 .FirstOrDefaultAsync(o => o.Id == orderId, cancellationToken: token);
             
             if (order != null)
