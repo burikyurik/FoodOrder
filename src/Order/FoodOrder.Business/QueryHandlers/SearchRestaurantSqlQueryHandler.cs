@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using FoodOrder.Business.Dtos;
 using FoodOrder.Business.Query;
+using FoodOrder.Data.Dtos;
 using FoodOrder.Data.SqlServer;
 using FoodOrder.Domain.Entity.RestaurantAggregate;
 using MediatR;
@@ -31,8 +30,7 @@ namespace FoodOrder.Business.QueryHandlers
                 .ToListAsync(cancellationToken);
             if (!restaurantsIds.Any())
                 return result;
-
-            var menuItemsWithCategory = await _context.RestaurantCategories.AsNoTracking()
+            var menuItemsWithCategory = await _context.RestaurantCategories.Include(x=>x.Restaurant).Include(x=>x.MenuItems).AsNoTracking()
                 .Where(x => restaurantsIds.Contains(x.Restaurant.Id) && EF.Functions.Like(x.Name, message.KeyWord))
                 .Select(x => MapDto(x))
                 .ToListAsync(cancellationToken);
@@ -54,7 +52,7 @@ namespace FoodOrder.Business.QueryHandlers
             {
                 Id = category.RestaurantId,
                 Name = category.Restaurant.Name,
-                Logo = new Uri(category.Restaurant.LogoPath),
+                Logo = category.Restaurant.LogoPath,
                 Rank = category.Restaurant.Rank,
                 Suburb = category.Restaurant.Suburb,
                 Items = category.MenuItems.Select(x => new MenuItemDto

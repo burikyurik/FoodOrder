@@ -27,7 +27,7 @@ namespace FoodOrder.Api.Controllers
         /// <param name="orderRequest">Order parameters.</param>
         /// <param name="token"></param>
         /// <returns></returns>
-        [HttpPost("order")]
+        [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CreateOrders([FromBody] OrderRequest orderRequest, CancellationToken token = default)
@@ -43,7 +43,7 @@ namespace FoodOrder.Api.Controllers
         /// <param name="id">Order Id.</param>
         /// <param name="token"></param>
         /// <returns>OrderDto</returns>
-        [Route("order/{orderId}")]
+        [HttpGet("order/{orderId}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> GetOrderStatus(int id, CancellationToken token = default)
@@ -58,8 +58,7 @@ namespace FoodOrder.Api.Controllers
         /// <param name="id">Order Id</param>
         /// <param name="token"></param>
         /// <returns></returns>
-        [Route("cancel")]
-        [HttpPut]
+        [HttpPut("cancel/{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -76,15 +75,14 @@ namespace FoodOrder.Api.Controllers
         /// <param name="orderRate">Order Rate (range 0 to 10)</param>
         /// <param name="token"></param>
         /// <returns></returns>
-        [Route("order/{orderid}/rate")]
-        [HttpPut]
+        [HttpPut("order/{orderid}/rate/{orderrate}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> RateOrder(int id, int orderRate, CancellationToken token = default)
+        public async Task<IActionResult> RateOrder(int id, int orderrate, CancellationToken token = default)
         {
             //TODO add validation
-            await _mediator.Publish(new RateOrderCommand(id,orderRate), token);
+            await _mediator.Publish(new RateOrderCommand(id, orderrate), token);
             return Ok();
         }
     }

@@ -27,9 +27,9 @@ namespace FoodOrder.Business.CommandHandlers
             //Address address = null;
             foreach (var messageOrder in message.Orders)
             {
-                var order = new Order(DateTime.UtcNow, OrderStatus.Created.Id, message.ClientId, string.Empty, messageOrder.restaurantId, messageOrder.menuItemInts);
+                //var order = new Order(DateTime.UtcNow, OrderStatus.Created.Id, message.ClientId, string.Empty, messageOrder.restaurantId, messageOrder.menuItemInts);
 
-                _orderRepository.Add(order)
+                //_orderRepository.Add(order)
             }
 
         }

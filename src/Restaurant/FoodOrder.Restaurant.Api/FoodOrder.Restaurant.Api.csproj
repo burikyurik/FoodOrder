@@ -2,23 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>c85f0109-eaeb-41e5-8dd9-ef7173b7a878</UserSecretsId>
+    <UserSecretsId>b6b4476f-7265-4b29-a6cb-cd93ba3e361b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="7.1.5" />
-    <PackageReference Include="MassTransit.AspNetCore" Version="7.1.5" />
-    <PackageReference Include="MassTransit.EntityFrameworkCore" Version="7.1.5" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.5" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\FoodOrder.Models\FoodOrder.Shared.Models.csproj" />
+    <ProjectReference Include="..\..\PaymentService\FoodOrder.Payment.Api\FoodOrder.Payment.Api.csproj" />
   </ItemGroup>
 
 </Project>

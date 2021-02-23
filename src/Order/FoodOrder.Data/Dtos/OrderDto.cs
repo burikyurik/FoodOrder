@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FoodOrder.Business.Dtos
+namespace FoodOrder.Data.Dtos
 {
     public class OrderDto
     {

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using FoodOrder.Payment.Api.Consumers;
 using MassTransit;
 
-namespace FoodOrder.Payment.Api
+namespace FoodOrder.Restaurant.Api
 {
     public class Startup
     {

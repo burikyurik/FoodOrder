@@ -16,6 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\RestaurantManagementController.cs" />
+    <Compile Remove="Controllers\UserManagementController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MassTransit.AspNetCore" Version="7.1.5" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.5" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.5" />
@@ -41,6 +46,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\FoodOrder.Business\FoodOrder.Business.csproj" />
+    <ProjectReference Include="..\FoodOrder.Business\FoodOrder.Business.csproj" />
   </ItemGroup>
 
 </Project>

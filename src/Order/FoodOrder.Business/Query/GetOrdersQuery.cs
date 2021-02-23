@@ -1,5 +1,5 @@
 ﻿using System;
-using FoodOrder.Business.Dtos;
+using FoodOrder.Data.Dtos;
 using MediatR;
 
 namespace FoodOrder.Business.Query

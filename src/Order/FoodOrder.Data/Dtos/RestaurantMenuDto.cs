@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace FoodOrder.Business.Dtos
+namespace FoodOrder.Data.Dtos
 {
     public class RestaurantMenuDto
     {
@@ -10,7 +8,7 @@ namespace FoodOrder.Business.Dtos
         public string Name { get; set; }
         public string Suburb { get; set; }
         public int Rank { get; set; }
-        public Uri Logo { get; set; }
+        public string Logo { get; set; }
         public ICollection<MenuItemDto> Items { get; set; }
     }
 }

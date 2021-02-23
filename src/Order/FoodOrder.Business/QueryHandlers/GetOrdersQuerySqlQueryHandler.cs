@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using FoodOrder.Business.Dtos;
 using FoodOrder.Business.Query;
+using FoodOrder.Data.Dtos;
 using FoodOrder.Data.SqlServer;
 using FoodOrder.Domain.Entity.OrderAggregate;
 using MediatR;
