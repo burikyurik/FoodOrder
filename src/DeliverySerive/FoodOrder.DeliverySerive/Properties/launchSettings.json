@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FoodOrder.DeliverySerive": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

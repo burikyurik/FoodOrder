@@ -25,13 +25,13 @@ namespace FoodOrder.Business.CommandHandlers
         {
             //TODO create delivery address
             //Address address = null;
-            //foreach (var messageOrder in message.Orders)
-            //{
-            //    var order = new Order(DateTime.UtcNow, address, OrderStatus.Created.Id, message.ClientId, string.Empty, messageOrder.restaurantId, messageOrder.menuItemInts);
+            foreach (var messageOrder in message.Orders)
+            {
+                var order = new Order(DateTime.UtcNow, OrderStatus.Created.Id, message.ClientId, string.Empty, messageOrder.restaurantId, messageOrder.menuItemInts);
 
-            //    _orderRepository.Add(order)
-            //}
-            
+                _orderRepository.Add(order)
+            }
+
         }
     }
 }

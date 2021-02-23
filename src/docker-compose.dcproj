@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>9df7c148-cee8-4654-ba82-00a803f0185d</ProjectGuid>
+    <ProjectGuid>a2edbe10-3983-4a88-a789-41556a58ced4</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>foodorder.api</DockerServiceName>

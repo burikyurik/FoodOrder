@@ -73,7 +73,7 @@ namespace FoodOrder.Api.Controllers
         /// Rate Order.
         /// </summary>
         /// <param name="id">Order Id</param>
-        /// <param name="orderRate">Order Rate (range 1 to 5)</param>
+        /// <param name="orderRate">Order Rate (range 0 to 10)</param>
         /// <param name="token"></param>
         /// <returns></returns>
         [Route("order/{orderid}/rate")]
