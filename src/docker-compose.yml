@@ -6,3 +6,29 @@ services:
     build:
       context: .
       dockerfile: Order/FoodOrder.Api/Dockerfile
+
+  foodorder.delivery.api:
+    image: ${DOCKER_REGISTRY-}foodorderdeliveryapi
+    build:
+      context: .
+      dockerfile: DeliverySerive/FoodOrder.Delivery.Api/Dockerfile
+
+
+  foodorder.payment.api:
+    image: ${DOCKER_REGISTRY-}foodorderpaymentapi
+    build:
+      context: .
+      dockerfile: PaymentService/FoodOrder.Payment.Api/Dockerfile
+  
+  rabbitmq: # login guest:guest
+    image: rabbitmq:3-management
+    hostname: "rabbitmq"
+    labels:
+      NAME: "rabbitmq"
+    ports:
+    - "4369:4369"
+    - "5671:5671"
+    - "5672:5672"
+    - "25672:25672"
+    - "15671:15671"
+    - "15672:15672"

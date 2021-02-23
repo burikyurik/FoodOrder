@@ -8,7 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["DeliverySerive/FoodOrder.Delivery.Api/FoodOrder.Delivery.Api.csproj", "DeliverySerive/FoodOrder.Delivery.Api/"]
-COPY ["Common/FoodOrder.Models/FoodOrder.Shared.Models.csproj", "Common/FoodOrder.Models/"]
 RUN dotnet restore "DeliverySerive/FoodOrder.Delivery.Api/FoodOrder.Delivery.Api.csproj"
 COPY . .
 WORKDIR "/src/DeliverySerive/FoodOrder.Delivery.Api"
