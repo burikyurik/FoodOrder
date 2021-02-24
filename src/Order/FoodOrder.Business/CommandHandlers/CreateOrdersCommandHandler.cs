@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using FoodOrder.Business.Command;
 using FoodOrder.Data.SqlServer;
 using FoodOrder.Domain.Entity.OrderAggregate;
-using FoodOrder.Domain.Entity.RestaurantAggregate;
-using FoodOrder.Domain.ValueObject;
 using MediatR;
 
 namespace FoodOrder.Business.CommandHandlers
@@ -13,25 +12,29 @@ namespace FoodOrder.Business.CommandHandlers
     public class CreateOrdersCommandHandler: INotificationHandler<CreateOrdersCommand>
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly OrderingContext _context;
 
-        public CreateOrdersCommandHandler(IOrderRepository orderRepository, OrderingContext context)
+        public CreateOrdersCommandHandler(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
-            _context = context;
         }
 
         public async Task Handle(CreateOrdersCommand message, CancellationToken cancellationToken)
         {
             //TODO create delivery address
             //Address address = null;
-            foreach (var messageOrder in message.Orders)
+            //var menuItemsIds = message.Orders.SelectMany(x => x.menuItemInts);
+            //var menuItems = _context.MenuItems.AsNoTracking()
+            //    .Include(x => x.Category).ThenInclude(x => x.Restaurant)
+            //    .Where(x => menuItemsIds.Contains(x.Id))
+            //    .ToListAsync(cancellationToken);
+            foreach (var (restaurantId, menuItemInts) in message.Orders)
             {
-                //var order = new Order(DateTime.UtcNow, OrderStatus.Created.Id, message.ClientId, string.Empty, messageOrder.restaurantId, messageOrder.menuItemInts);
+                var order = new Order(DateTime.UtcNow, OrderStatus.Created.Id, message.ClientId, string.Empty, restaurantId, new List<OrderItem>());
 
-                //_orderRepository.Add(order)
+                _orderRepository.Add(order);
             }
 
+            await _orderRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
         }
     }
 }

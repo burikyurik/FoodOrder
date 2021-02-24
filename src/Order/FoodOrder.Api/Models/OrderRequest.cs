@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FoodOrder.Api.Models
+﻿namespace FoodOrder.Api.Models
 {
     public class OrderRequest
     {
         public int? ClientId { get; set; }
-        public ICollection<(int restaurantId, int[] menuItemInts)> Orders { get; set; }
+        public OrderData[] Orders { get; set; }
+    }
+
+    public class OrderData
+    {
+        public int RestaurantId { get; set; }
+        public ItemData[] Items { get; set; }
+    }
+
+    public class ItemData
+    {
+        public int MenuItemId { get; set; }
     }
 }

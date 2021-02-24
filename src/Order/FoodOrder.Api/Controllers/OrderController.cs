@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,7 +34,9 @@ namespace FoodOrder.Api.Controllers
         public async Task<IActionResult> CreateOrders([FromBody] OrderRequest orderRequest, CancellationToken token = default)
         {
             //TODO add validation
-            await _mediator.Publish(new CreateOrdersCommand(orderRequest.ClientId, orderRequest.Orders), token);
+            await _mediator.Publish(new CreateOrdersCommand(orderRequest.ClientId, 
+                orderRequest.Orders.Select(x=>
+                    (x.RestaurantId,x.Items.Select(c=>c.MenuItemId).ToArray())).ToList()), token);
             return Ok();
         }
 
